@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Home/About page">
+    <meta name="keywords" content="HTML, UX, Portfolio">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="nav-style.css">
+    <title> Tung's Contact </title>
+    <style>
+        #images {
+            white-space: nowrap;
+        }
+
+        body {
+            background-color: var(--secondary-color, purple);
+        }
+
+        .contact-form {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            grid-template-rows: repeat(4, 0.5fr) 2fr 0.5fr;
+            grid-column-gap: 0px;
+            grid-row-gap: 25px;
+            border: 0;
+            width: 50%;
+            margin: 0 auto;
+        }
+
+        .contact-form legend {
+            text-align: center;
+            padding-top: 1em;
+            grid-row: 1;
+            font-size: 2em;
+            font-weight: bolder;
+        }
+
+        label[for="name"] {
+            text-align: right;
+            margin: auto 1em auto auto;
+            font-weight: bolder;
+            grid-column: 1;
+            grid-row: 2;
+        }
+
+        .contact-form #name{
+            grid-area: 2 / 2 / 3 / 4;
+        }
+
+        label[for="email"] {
+            text-align: right;
+            margin: auto 1em auto auto;
+            font-weight: bolder;
+            grid-column: 1;
+            grid-row: 3;
+        }
+        
+        .contact-form #email {
+            grid-area: 3 / 2 / 4 / 4; 
+        }
+
+        label[for="services"] {
+            text-align: right;
+            margin: auto 1em auto auto;
+            font-weight: bolder;
+            grid-column: 1;
+            grid-row: 4;
+        }
+
+        .contact-form #services {
+            grid-area: 4 / 2 / 5 / 4;
+        }
+
+        label[for="content"] {
+            text-align: right;
+            margin: 0em 1em auto auto;
+            font-weight: bolder;
+            grid-column: 1;
+            grid-row: 5;
+        }
+
+        .contact-form #content {
+            grid-area: 5 / 2 / 6 / 4;
+        }
+
+        .contact-form #submit-butt {
+            grid-area: 6 / 2 / 7 / 3;
+            overflow: auto;
+            font-weight: bold;
+            background-color: var(--primary-color, white);
+            border-style: solid;
+            border-color: var(--third-color, black);
+        }
+
+        #social-media-icons {
+            width: 50%;
+            margin: auto;
+        }
+
+        footer {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="nav-bar">
+            <strong class="my-name"> TUNG NGUYEN </strong>
+            <a href="index.html"><b>About</b></a>
+            <a href="portfolio.html"><b>Portfolio</b></a>
+            <a href="contact.html"><b>Contact</b></a>
+            <a href="services.html"><b>Services</b></a>
+        </nav>
+    </header>
+
+    <main>
+        <form>
+            <fieldset class="contact-form">
+                <legend> CONTACT FORM </legend>
+                <label for="name"> NAME </label>
+                <input type="text" id="name" name="name">
+                <label for="email"> EMAIL </label>
+                <input type="email" id="email" name="email">
+
+                <label for="services"> SERVICE <br> (optional) </label>
+                <select name="services" id="services">
+                    <optgroup label="Commission">
+                        <option value="commission"> "Sketching" </option>
+                        <option value="commission"> "Styling" </option>
+                        <option value="commission"> "Full-package" </option>
+                    </optgroup>
+                    <optgroup label="Standalone Services">
+                        <option value="service1"> Wire-framing </option>
+                        <option value="service2"> HTML Framework </option>
+                        <option value="service3"> CSS Styling </option>
+                        <option value="service4"> Back-end Scripting </option>
+                    </optgroup>
+                </select>
+
+                <label for="content"> CONTENT </label>
+                <textarea id="content" name="content" rows="10" cols="50">Write me something!
+                </textarea>
+                <input id="submit-butt" type="submit" value="Submit">
+            </fieldset>
+        </form>
+    </main>
+
+    <footer>
+        <div id="social-media-icons">
+            <h1> FOLLOW ME ON SOCIAL MEDIA </h1>
+            <a href="https://twitter.com/">
+                <img src="Icons/twitter.png" alt="twitter.com" width="100" height="100">
+            </a>
+            <a href="https://www.reddit.com/">
+                <img src="Icons/reddit.png" alt="reddit.com" width="100" height="100">
+            </a>
+            <a href="https://www.tumblr.com/">
+                <img src="Icons/tumblr.png" alt="tumblr.com" width="100" height="100">
+            </a>
+        </div>
+    </footer>
+</body>
+</html>

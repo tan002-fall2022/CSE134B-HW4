@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Home/About page">
+    <meta name="keywords" content="HTML, UX, Portfolio">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="nav-style.css">
+    <title> Tung's Projects </title>
+    <style>
+        img, video {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            object-fit: cover;
+            width: 100%;
+            max-height: 100%;
+        }
+
+        .main-title {
+            padding-left: 0.5em;
+            transition: font-size 1s 0.5s;
+        }
+
+        .main-title:hover {
+            font-size: 1.5em;
+        }
+
+        /* For current project card */
+        .curr-proj, .proj-right {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
+            margin-bottom: 1em;
+            background-color: var(--secondary-color, purple);
+        }
+
+        .proj-left {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            grid-template-rows: 1fr;
+            grid-column-gap: 0px;
+            grid-row-gap: 0px;
+            margin-bottom: 1em;
+            background-color: var(--secondary-color, purple);
+        }
+
+        .curr-proj video { 
+            grid-area: 1 / 2 / 2 / 3; 
+        }
+
+        /* For left card */
+        .proj-left img { 
+            grid-area: 1 / 1 / 2 / 3; 
+        }
+
+        /* For right card */
+        .proj-right img {
+            grid-area: 1 / 1 / 2 / 2; 
+        }
+
+        /* General text alignment */
+        .right-text { 
+            font-size: 1.2vw;
+            margin: 1em auto 1em 3em;
+            grid-area: 1 / 2 / 2 / 3; 
+        }
+
+        .left-text {
+            font-size: 1.2vw;
+            margin: 1em auto 1em 3em;
+            grid-area: 1 / 1 / 2 / 2; 
+        }
+
+        form input {
+            font-weight: bold;
+            font-size: 1.5em;
+            background-color: var(--secondary-color, purple);
+            border-style: solid;
+            border-color: var(--third-color, black);
+        }
+
+        button {
+            font-weight: bold;
+            font-size: 1.5em;
+            background-color: var(--primary-color, white);
+            border-style: solid;
+            border-color: var(--third-color, black);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="nav-bar">
+            <strong class="my-name"> TUNG NGUYEN </strong>
+            <a href="index.html"><b>About</b></a>
+            <a href="portfolio.html"><b>Portfolio</b></a>
+            <a href="contact.html"><b>Contact</b></a>
+            <a href="services.html"><b>Services</b></a>
+        </nav>
+    </header>
+
+    <main>
+        <h1 class="main-title"> Current Project </h1>
+        <section class="curr-proj">
+            <video controls>
+                <source src="movie.mp4" type="video/mp4">
+                <source src="movie.ogg" type="video/ogg">
+                Your browser does not support the video tag.
+            </video>
+
+            <div class="left-text">            
+                <h1> Project's Name </h1>
+                <h2> Project's Date Range </h2>
+                <h3> Project's Members </h3>
+
+                <details>
+                    <summary> Current plans </summary>
+                    <p> Project's Description </p>
+                </details>
+                
+                <form>
+                    <input type="submit" value="Learn More">
+                </form>
+            </div>
+        </section>
+
+        <h1 class="main-title"> Past Projects </h1>
+        <section class="proj-right">
+            <picture>
+                <source media="(max-width: 720px)" srcset="Pictures/rectangular_720p.jpg">
+                <source media="(max-width: 1080px)" srcset="Pictures/rectangular_1080p.jpg">
+                <source media="(max-width: 1440px)" srcset="Pictures/rectangular_1440p.jpg">
+                <img src="Pictures/rectangular_2160p.jpg" alt="stock-photo">
+            </picture>
+
+            <div class="left-text"> 
+                <h1> Project's Name </h1>
+                <h2> Project's Date Range </h2>
+                <h3> Project's Members </h3>
+
+                <details>
+                    <summary> What was it about </summary>
+                    <p> Project's Description </p>
+                </details>
+
+                <figure class="project-accomplishments">
+                    <figcaption>Accomplishments</figcaption>
+                    <ul>
+                        <li>Accomplishment 1</li>
+                        <li>Accomplishment 2</li>
+                        <li>Accomplishment 3</li>
+                    </ul>
+                </figure>
+            </div>
+        </section>
+
+        <section class="proj-left">
+            <picture>
+                <source media="(max-width: 720px)" srcset="Pictures/rectangular_720p.jpg">
+                <source media="(max-width: 1080px)" srcset="Pictures/rectangular_1080p.jpg">
+                <source media="(max-width: 1440px)" srcset="Pictures/rectangular_1440p.jpg">
+                <img src="Pictures/rectangular_2160p.jpg" alt="stock-photo">
+            </picture>
+
+            <div class="right-text"> 
+                <h1> Project's Name </h1>
+                <h2> Project's Date Range </h2>
+                <h3> Project's Members </h3>
+
+                <details>
+                    <summary> What was it about </summary>
+                    <p> Project's Description </p>
+                </details>
+
+                <figure class="project-accomplishments">
+                    <figcaption>Accomplishments</figcaption>
+                    <ul>
+                        <li>Accomplishment 1</li>
+                        <li>Accomplishment 2</li>
+                        <li>Accomplishment 3</li>
+                    </ul>
+                </figure>
+            </div>
+        </section>
+
+        <section class="proj-right">
+            <picture>
+                <source media="(max-width: 720px)" srcset="Pictures/rectangular_720p.jpg">
+                <source media="(max-width: 1080px)" srcset="Pictures/rectangular_1080p.jpg">
+                <source media="(max-width: 1440px)" srcset="Pictures/rectangular_1440p.jpg">
+                <img src="Pictures/rectangular_2160p.jpg" alt="stock-photo">
+            </picture>
+
+            <div class="left-text"> 
+                <h1> Project's Name </h1>
+                <h2> Project's Date Range </h2>
+                <h3> Project's Members </h3>
+
+                <details>
+                    <summary> What was it about </summary>
+                    <p> Project's Description </p>
+                </details>
+
+                <figure class="project-accomplishments">
+                    <figcaption>Accomplishments</figcaption>
+                    <ul>
+                        <li>Accomplishment 1</li>
+                        <li>Accomplishment 2</li>
+                        <li>Accomplishment 3</li>
+                    </ul>
+                </figure>
+            </div>
+        </section>
+        
+        <button onclick="showMore()"> See More </button>
+        
+        <template>
+            <section>
+                <picture>
+                    <source media="(max-width: 720px)" srcset="Pictures/rectangular_720p.jpg">
+                    <source media="(max-width: 1080px)" srcset="Pictures/rectangular_1080p.jpg">
+                    <source media="(max-width: 1440px)" srcset="Pictures/rectangular_1440p.jpg">
+                    <img src="Pictures/rectangular_2160p.jpg" alt="stock-photo">
+                </picture>
+    
+                <h1> Project's Name </h1>
+                <h2> Project's Date Range </h2>
+                <h3> Project's Members </h3>
+    
+                <details>
+                    <summary> What was it about </summary>
+                    <p> Project's Description </p>
+                </details>
+    
+                <figure class="project-accomplishments">
+                    <figcaption>Accomplishments</figcaption>
+                    <ul>
+                        <li>Accomplishment 1</li>
+                        <li>Accomplishment 2</li>
+                        <li>Accomplishment 3</li>
+                    </ul>
+                </figure>
+            </section>
+        </template>
+    </main>
+</body>
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Home/About page">
+    <meta name="keywords" content="HTML, UX, Portfolio">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="nav-style.css">
+    <title> Tung's Bio </title>
+    <style>
+        /* For BIO */
+        .BIO {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            grid-template-rows: 1fr;
+            grid-column-gap: 50px;
+            grid-row-gap: 0px;
+            margin: 0em 0em 2em 0em;
+            background-color: var(--secondary-color, purple);
+        }
+
+        .BIO img {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            width: 100%;
+            height: auto;
+            grid-area: 1 / 1 / 2 / 2; 
+            margin: auto;
+        }
+
+        .BIO #BIO-TEXT {
+            font-size: 1.2vw;
+            margin: auto 2em auto 1em;
+            grid-area: 1 / 2 / 2 / 3; 
+        }
+
+        /* For Project and Service */
+        .POSTS {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .POSTS img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .PROJECT, .SERVICE {
+            max-width: 30dvw;
+            margin: 0.5em auto 1em auto;
+            background-color: var(--secondary-color, purple);
+            transition: all 0.75s ease-out;
+        }
+
+        .PROJECT:hover, .SERVICE:hover {
+            transform: scale(1.1);
+        }
+
+        .PROJECT, .SERVICE img {
+            width: 100%;
+            height: auto;
+        }
+
+        .CARD-TEXT {
+            font-size: 1.2dvw;
+            margin: 1em 1em 1em 1em;
+        }
+
+        form input {
+            font-weight: bold;
+            font-size: 1.5em;
+            background-color: var(--primary-color, purple);
+            border-style: solid;
+            border-color: var(--third-color, black);
+        }
+
+        form input:hover {
+            color: var(--primary-color, black);
+            background-color: var(--secondary-color, purple);
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="nav-bar">
+            <strong class="my-name"> TUNG NGUYEN </strong>
+            <a href="index.html"><b>About</b></a>
+            <a href="portfolio.html"><b>Portfolio</b></a>
+            <a href="contact.html"><b>Contact</b></a>
+            <a href="services.html"><b>Services</b></a>
+        </nav>
+    </header>
+
+    <main>
+        <article class="BIO">
+            <picture>
+                <source media="(max-width: 720px)" srcset="Pictures/rectangular_720p.jpg">
+                <source media="(max-width: 1080px)" srcset="Pictures/rectangular_1080p.jpg">
+                <source media="(max-width: 1440px)" srcset="Pictures/rectangular_1440p.jpg">
+                <img src="Pictures/rectangular_2160p.jpg" alt="stock-photo">
+            </picture>
+            
+            <div id="BIO-TEXT">
+                <h1> Hello! Welcome to my page! </h1>
+                <!-- This is just for testing how the text will scale-->
+                <p> 
+                    Insipidity the sufficient discretion imprudence resolution sir him decisively. 
+                    Proceed how any engaged visitor. Explained propriety off out perpetual his you. 
+                    Feel sold off felt nay rose met you. We so entreaties cultivated astonished is. 
+                    Was sister for few longer mrs sudden talent become. Done may bore quit evil old mile. 
+                    If likely am of beauty tastes. Resources exquisite set arranging moonlight sex him household had. 
+                    Months had too ham cousin remove far spirit. She procuring the why performed continual improving. 
+                    Civil songs so large shade in cause. Lady an mr here must neat sold. 
+                    Children greatest ye extended delicate of. No elderly passage earnest as in removed winding or.
+                </p>
+        
+                <form action="portfolio.html">
+                    <input type="submit" value="See My Work">
+                </form>
+            </div>
+        </article>
+        
+        <article class="POSTS">
+            <section class="PROJECT">
+                <picture>
+                    <source media="(max-width: 720px)" srcset="Pictures/square_720p.jpg">
+                    <source media="(max-width: 1080px)" srcset="Pictures/square_1080p.jpg">
+                    <source media="(max-width: 1440px)" srcset="Pictures/square_1440p.jpg">
+                    <img src="Pictures/square_2160p.jpg" alt="stock-photo">
+                </picture>
+                
+                <div class="CARD-TEXT">
+                    <h1><em> UPCOMING PROJECT'S NAME </em></h1>
+                    <p> SHORT <br> DESCRIPTION </p>
+            
+                    <form>
+                        <input type="submit" value="See More">
+                    </form>
+                </div>
+            </section>
+        
+            <section class="SERVICE">
+                <picture>
+                    <source media="(max-width: 720px)" srcset="Pictures/square_720p.jpg">
+                    <source media="(max-width: 1080px)" srcset="Pictures/square_1080p.jpg">
+                    <source media="(max-width: 1440px)" srcset="Pictures/square_1440p.jpg">
+                    <img src="Pictures/square_2160p.jpg" alt="stock-photo">
+                </picture>
+                
+                <div class="CARD-TEXT">
+                    <h1><em> UPCOMING SERVICE'S NAME </em></h1>
+                    <p> SHORT <br> DESCRIPTION </p>
+            
+                    <form>
+                        <input type="submit" value="See More">
+                    </form>
+                </div>
+            </section>
+        </article>
+    </main>
+</body>
+
+</html>

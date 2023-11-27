@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Home/About page">
+    <meta name="keywords" content="HTML, UX, Portfolio">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="nav-style.css">
+    <title> Tung's Services </title>
+    <style>
+        .service-card img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        .service-list {
+            padding-top: 0.5em;
+            padding-bottom: 0.5em;
+            background-color: var(--secondary-color, purple);
+            padding-left: 0;
+            margin-right: 0;
+            text-align: center;
+        }
+
+        .service-cards-container {
+            display: inline-flex;
+            align-items: center;
+        }
+
+        .service-card {
+            max-width: 20dvw;
+            transition: all 0.75s 0.5s;
+            border-radius: 10px;
+            background-color: var(--primary-color, white);
+            margin: 0.5em 0.5em 1em 0.5em;
+        }
+
+        .service-card:hover {
+            transform: scale(1.25);
+            margin: 2em 2em 4em 2em;
+        }
+
+        .service-card input {
+            max-width: 75%;
+            font-size: 100%;
+            margin: 0 1em 1em 1em;
+            overflow: auto;
+            font-weight: bold;
+            background-color: var(--primary-color, white);
+            border-style: solid;
+            border-color: var(--third-color, black);
+        }
+
+        .service-card input:hover {
+            color: var(--primary-color, black);
+            background-color: var(--secondary-color, purple);
+        }
+
+        #title-main {
+            transition: font-size 1s 0.5s;
+            font-size: 3em;
+            margin-bottom: 0px;
+        }
+
+        #title-main:hover {
+            font-size: 4em;
+        }
+
+        #title-quote {
+            transition: font-size 1s 0.5s;
+            font-size: 1.5em;
+        }
+
+        #title-quote:hover {
+            font-size: 2.5em;
+        }
+
+        .comm-package {
+            background-color: white;
+        }
+
+        table {
+            text-align: center;
+            width: 60%;
+            margin-bottom: 2em;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        table caption {
+            font-size: 3em;
+            margin: 1em auto 1em auto;
+        }
+
+        table thead {
+            color: white;
+            background-color: var(--third-color, purple);
+            font-size: 2em;
+        }
+
+        table tbody {
+            color: white;
+            background-color: var(--secondary-color, purple);
+        }
+
+        th, td {
+            padding: 10px;
+        }
+
+    </style>
+</head>
+
+<body>
+    <header>
+        <nav class="nav-bar">
+            <strong class="my-name"> TUNG NGUYEN </strong>
+            <a href="index.html"><b>About</b></a>
+            <a href="portfolio.html"><b>Portfolio</b></a>
+            <a href="contact.html"><b>Contact</b></a>
+            <a href="services.html"><b>Services</b></a>
+        </nav>
+    </header>
+
+    <main>
+        <article class="service-list">
+            <p id="title-main"><strong>Standalone Services </strong></p>
+            <p id="title-quote"> "Quality at a reasonable price" </p>    
+            <section class="service-cards-container">
+
+            <section class="service-card">
+                <picture>
+                    <source media="(max-width: 720px)" srcset="Pictures/square_720p.jpg">
+                    <source media="(max-width: 1080px)" srcset="Pictures/square_1080p.jpg">
+                    <source media="(max-width: 1440px)" srcset="Pictures/square_1440p.jpg">
+                    <img src="Pictures/square_2160p.jpg" alt="stock-photo">
+                </picture>
+
+                <h1> Wire-framing </h1>
+                <h2> PRICE </h2>
+                <form>
+                    <input type="submit" value="See More">
+                </form>
+            </section>
+
+            <section class="service-card">
+                <picture>
+                    <source media="(max-width: 720px)" srcset="Pictures/square_720p.jpg">
+                    <source media="(max-width: 1080px)" srcset="Pictures/square_1080p.jpg">
+                    <source media="(max-width: 1440px)" srcset="Pictures/square_1440p.jpg">
+                    <img src="Pictures/square_2160p.jpg" alt="stock-photo">
+                </picture>
+
+                <h1> HTML Framework </h1>
+                <h2> PRICE </h2>
+                <form>
+                    <input type="submit" value="See More">
+                </form>
+            </section>
+
+            <section class="service-card">
+                <picture>
+                    <source media="(max-width: 720px)" srcset="Pictures/square_720p.jpg">
+                    <source media="(max-width: 1080px)" srcset="Pictures/square_1080p.jpg">
+                    <source media="(max-width: 1440px)" srcset="Pictures/square_1440p.jpg">
+                    <img src="Pictures/square_2160p.jpg" alt="stock-photo">
+                </picture>
+
+                <h1> CSS Styling </h1>
+                <h2> PRICE </h2>
+                <form>
+                    <input type="submit" value="See More">
+                </form>
+            </section>
+
+            <section class="service-card">
+                <picture>
+                    <source media="(max-width: 720px)" srcset="Pictures/square_720p.jpg">
+                    <source media="(max-width: 1080px)" srcset="Pictures/square_1080p.jpg">
+                    <source media="(max-width: 1440px)" srcset="Pictures/square_1440p.jpg">
+                    <img src="Pictures/square_2160p.jpg" alt="stock-photo">
+                </picture>
+
+                <h1> Back-end Scripting </h1>
+                <h2> PRICE </h2>
+                <form>
+                    <input type="submit" value="See More">
+                </form>
+            </section>
+            </section>
+        </article>
+
+        <article class="comm-package">
+            <table class="service-table">
+                <caption><strong> Commission Packages </strong></caption>
+                <thead>
+                    <tr>
+                        <th>Services</th>
+                        <th>"Sketching"</th>
+                        <th>"Styling"</th>
+                        <th>"Full-package"</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Wire-framing</td>
+                        <td>✓</td>
+                        <td>✓</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>HTML-Framework</td>
+                        <td>✓</td>
+                        <td>✓</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>CSS-Styling</td>
+                        <td></td>
+                        <td>✓</td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>Back-end Scripting</td>
+                        <td></td>
+                        <td></td>
+                        <td>✓</td>
+                    </tr>
+                    <tr>
+                        <td>Pricing</td>
+                        <td>Price</td>
+                        <td>Price</td>
+                        <td>Price</td>
+                    </tr>
+                </tbody>
+            </table>
+        </article>
+    </main>
+</body>
+</html>

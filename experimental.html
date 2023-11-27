@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="Home/About page">
+    <meta name="keywords" content="HTML, UX, Portfolio">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title> TUNG NGUYEN'S PORTFOLIO SITE </title>
+</head>
+
+<body>
+    <header>
+        <span class="TODO-styling">
+            <strong class="my-name"> Tung Nguyen </strong>
+        </span>
+        <nav class="nav-bar">
+            <a href="index.html"><b>Home</b></a>
+            <a href="portfolio.html"><b>Portfolio</b></a>
+            <a href="contact.html"><b>Contact</b></a>
+            <a href="services.html"><b>Services</b></a>
+            <a href="experimental.html"><b>Experimental</b></a>
+        </nav>
+    </header>
+
+    <main>
+        <section>
+            <h1> Testing tag 'code' </h1>
+            <p><i> Here's the effect of tag 'code' in HTML </i></p>
+            <code> x = 3; y = 4; u = 8 </code>
+            <aside> Notice how the formatting of the text is similar to actual codes in an IDE</aside>
+        </section>
+        <hr>
+
+        <section>
+            <h1> Testing tag 'pre' </h1>
+            <pre> 
+                If you ever feel like preformatting your t e x t    lIkE    ThIs.
+                You can use the tag 'pre'
+            </pre>
+        </section>
+        <hr>
+ 
+        <section>
+            <h1><strong> Audio ambient sound demo </strong></h1>
+            <audio controls>
+                <source src="Audio/ambient.mp3" type="audio/mp3">
+                Your browser does not support the audio tag.
+              </audio>
+        </section>
+        <hr>
+
+        <strong> Canvas HTML5 Demo</strong><br>
+        <canvas id="testCanvas">
+            Testing out canvas tag.
+        </canvas>
+        <hr>
+
+        <section>
+            <h1> Testing tag 'svg' </h1>
+            <p> Onto my right is a quarter of a circle 
+                <svg width="50" height="50">
+                    <circle cx="50" cy="50" r="40" stroke="green" style="fill:rgb(23,49,123)"/>
+                </svg>
+            </p>
+        </section>
+        <hr>
+
+        <section>
+            <h1> Testing tag 'ol' </h1>
+            <p> Alternative list style (ordered listing)</p>
+            <figure class="project-accomplishments">
+                <figcaption>Accomplishments</figcaption>
+                <ol>
+                    <li>Accomplishment 1</li>
+                    <li>Accomplishment 2</li>
+                    <li>Accomplishment 3</li>
+                </ol>
+            </figure>
+        </section>
+        <hr>
+
+        <section>
+            <h1> Testing tag 'datalist' </h1>
+            <p> Alternative service form </p>
+            <label for="service_alt">Choose your service from the list:</label>
+            <input list="services_alt" name="service_alt" id="service_alt">
+
+            <datalist id="services_alt">
+                <option value="Commission">
+                <option value="Wire-framing">
+                <option value="HTML Framework">
+                <option value="CSS Styling">
+                <option value="Back-end Scripting">
+            </datalist>
+        </section>
+        <hr>
+
+        <iframe src="portfolio.html" height="200" width="300" title="miniPortfolio"></iframe>
+    </main>
+
+    <script>
+        let canvas = document.getElementById("testCanvas");
+        let ctx = canvas.getContext("2d");
+        ctx.fillStyle = "red";
+        ctx.fillRect(0, 0, 80, 80);
+    </script>
+</body>
+
+</html>
