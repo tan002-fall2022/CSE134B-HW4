@@ -61,12 +61,14 @@
 
         /* CSS FOR OUTPUTS */
         .error {
+            padding-top: 0.5em;
             color: red;
             font-weight: bolder;
             grid-column: 1;
         }
 
         .info {
+            padding-top: 0.5em;
             color: yellow;
             font-weight: bolder;
             grid-column: 2;
@@ -105,6 +107,12 @@
             grid-area: 12 / 1 / 12 / 3;
         }
 
+        input, textarea:placeholder-shown {
+            background-color: ivory;
+            border: 2px solid pink;
+        }
+        
+        /* OTHERS */
         .contact-form #submit-butt {
             grid-area: 14 / 1 / 14 / 1;
             overflow: auto;
@@ -141,12 +149,12 @@
             <fieldset class="contact-form">
                 <legend> CONTACT FORM </legend>
                 <label for="name"> NAME </label>
-                <input type="text" id="name" name="name">
+                <input type="text" id="name" name="name" placeholder="Tung Nguyen" required>
                 <output class="error" for="name">error-message-if-any</output>
                 <output class="info" for="name">info-message-if-any</output>
 
                 <label for="email"> EMAIL </label>
-                <input type="email" id="email" name="email">
+                <input type="email" id="email" name="email" placeholder="tan002@ucsd.edu" required>
                 <output class="error" for="email">error-message-if-any</output>
                 <output class="info" for="email">info-message-if-any</output>
 
@@ -163,14 +171,15 @@
                         <option value="CSS_Styling"> CSS Styling </option>
                         <option value="Back_End_Script"> Back-end Scripting </option>
                     </optgroup>
-                    <option value="Others"><b> Other </b></option>
+                    <option value="Others" selected><b> Other(s) </b></option>
                 </select>
                 <output class="error" for="services">error-message-if-any</output>
                 <output class="info" for="services">info-message-if-any</output>
 
                 <label for="content"> CONTENT </label>
-                <textarea id="content" name="content" rows="10" cols="50">Write me something!
-                </textarea>
+                <textarea 
+                id="content" name="content" rows="10" 
+                cols="50" maxlength="500" placeholder="Write me something!"></textarea>
                 <output class="error" for="content">error-message-if-any</output>
                 <output class="info" for="content">info-message-if-any</output>
 
