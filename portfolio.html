@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="themeLight">
 
 <head>
     <meta charset="utf-8">
@@ -9,6 +9,10 @@
     <link rel="stylesheet" href="nav-style.css">
     <title> Tung's Projects </title>
     <style>
+        body {
+            background-color: var(--primary-color, white);
+        }
+
         img, video {
             display: flex;
             justify-content: center;
@@ -19,6 +23,7 @@
         }
 
         .main-title {
+            color: var(--font-color, black);
             padding-left: 0.5em;
             transition: font-size 1s 0.5s;
         }
@@ -29,6 +34,7 @@
 
         /* For current project card */
         .curr-proj, .proj-right {
+            color: var(--font-color, black);
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-template-rows: 1fr;
@@ -39,6 +45,7 @@
         }
 
         .proj-left {
+            color: var(--font-color, black);
             display: grid;
             grid-template-columns: 1fr 1fr;
             grid-template-rows: 1fr;
@@ -76,6 +83,7 @@
         }
 
         form input {
+            color: var(--font-color, black);
             font-weight: bold;
             font-size: 1.5em;
             background-color: var(--secondary-color, purple);
@@ -84,6 +92,7 @@
         }
 
         button {
+            color: var(--font-color, black);
             font-weight: bold;
             font-size: 1.5em;
             background-color: var(--primary-color, white);
@@ -101,6 +110,7 @@
             <a href="portfolio.html"><b>Portfolio</b></a>
             <a href="contact.html"><b>Contact</b></a>
             <a href="services.html"><b>Services</b></a>
+            <button id="themeSwitcher"><b>Light</b></button>
         </nav>
     </header>
 
@@ -248,5 +258,49 @@
             </section>
         </template>
     </main>
+
+    <script> 
+        function ready() {
+            const themeToggle = document.getElementById("themeSwitcher");
+
+            themeToggle.addEventListener("click", (event) => {
+                toggleTheme();
+            })
+        }
+
+        /* JS TO SET THEME */
+        function setTheme(themeName) {
+            localStorage.setItem('theme', themeName);
+            document.documentElement.className = themeName;
+        }
+
+        // function to toggle between light and dark theme
+        function toggleTheme() {
+            const toggle = document.getElementById("themeSwitcher");
+
+            if (localStorage.getItem('theme') === 'themeDark') {
+                toggle.innerHTML = "Light";
+                setTheme('themeLight');
+            } else {
+                toggle.innerHTML = "Dark";
+                setTheme('themeDark');
+            }
+        }
+        
+        // Load initial theme on start up
+        (function () {
+            const toggle = document.getElementById("themeSwitcher");
+
+            if (localStorage.getItem('theme') === 'themeDark') {
+                toggle.innerHTML = "Dark";
+                setTheme('themeDark');
+            } else {
+                toggle.innerHTML = "Light";
+                setTheme('themeLight');
+            }
+        })();
+        
+        document.addEventListener("DOMContentLoaded", ready());
+    </script>
 </body>
 </html>

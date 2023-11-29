@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="themeLight">
 <head>
     <meta charset="utf-8">
     <meta name="description" content="Home/About page">
@@ -8,12 +8,17 @@
     <link rel="stylesheet" href="nav-style.css">
     <title> Tung's Services </title>
     <style>
+        body {
+            background-color: var(--primary-color, white);
+        }
+
         .service-card img {
             max-width: 100%;
             height: auto;
         }
 
         .service-list {
+            color: var(--font-color, black);
             padding-top: 0.5em;
             padding-bottom: 0.5em;
             background-color: var(--secondary-color, purple);
@@ -41,6 +46,7 @@
         }
 
         .service-card input {
+            color: var(--font-color, black);
             max-width: 75%;
             font-size: 100%;
             margin: 0 1em 1em 1em;
@@ -76,7 +82,7 @@
         }
 
         .comm-package {
-            background-color: white;
+            background-color: var(--primary-color, white);
         }
 
         table {
@@ -88,6 +94,7 @@
         }
 
         table caption {
+            color: var(--font-color, black);
             font-size: 3em;
             margin: 1em auto 1em auto;
         }
@@ -118,6 +125,7 @@
             <a href="portfolio.html"><b>Portfolio</b></a>
             <a href="contact.html"><b>Contact</b></a>
             <a href="services.html"><b>Services</b></a>
+            <button id="themeSwitcher"><b>Light</b></button>
         </nav>
     </header>
 
@@ -235,5 +243,49 @@
             </table>
         </article>
     </main>
+
+    <script> 
+        function ready() {
+            const themeToggle = document.getElementById("themeSwitcher");
+
+            themeToggle.addEventListener("click", (event) => {
+                toggleTheme();
+            })
+        }
+
+        /* JS TO SET THEME */
+        function setTheme(themeName) {
+            localStorage.setItem('theme', themeName);
+            document.documentElement.className = themeName;
+        }
+
+        // function to toggle between light and dark theme
+        function toggleTheme() {
+            const toggle = document.getElementById("themeSwitcher");
+
+            if (localStorage.getItem('theme') === 'themeDark') {
+                toggle.innerHTML = "Light";
+                setTheme('themeLight');
+            } else {
+                toggle.innerHTML = "Dark";
+                setTheme('themeDark');
+            }
+        }
+        
+        // Load initial theme on start up
+        (function () {
+            const toggle = document.getElementById("themeSwitcher");
+
+            if (localStorage.getItem('theme') === 'themeDark') {
+                toggle.innerHTML = "Dark";
+                setTheme('themeDark');
+            } else {
+                toggle.innerHTML = "Light";
+                setTheme('themeLight');
+            }
+        })();
+        
+        document.addEventListener("DOMContentLoaded", ready());
+    </script>
 </body>
 </html>
