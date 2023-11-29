@@ -150,13 +150,13 @@
                 <legend> CONTACT FORM </legend>
                 <label for="name"> NAME </label>
                 <input type="text" id="name" name="name" placeholder="Tung Nguyen" required>
-                <output class="error" for="name">error-message-if-any</output>
-                <output class="info" for="name">info-message-if-any</output>
+                <output class="error" for="name" hidden="hidden">error-message-if-any</output>
+                <output class="info" for="name" hidden="hidden">info-message-if-any</output>
 
                 <label for="email"> EMAIL </label>
                 <input type="email" id="email" name="email" placeholder="tan002@ucsd.edu" required>
-                <output class="error" for="email">error-message-if-any</output>
-                <output class="info" for="email">info-message-if-any</output>
+                <output class="error" for="email" hidden="hidden">error-message-if-any</output>
+                <output class="info" for="email" hidden="hidden">info-message-if-any</output>
 
                 <label for="services"> SERVICE </label>
                 <select name="services" id="services">
@@ -180,8 +180,8 @@
                 <textarea 
                 id="content" name="content" rows="10" 
                 cols="50" maxlength="500" placeholder="Write me something!"></textarea>
-                <output class="error" for="content">error-message-if-any</output>
-                <output class="info" for="content">info-message-if-any</output>
+                <output class="error" for="content" hidden="hidden">error-message-if-any</output>
+                <output class="info" for="content" hidden="hidden">info-message-if-any</output>
 
                 <input id="submit-butt" type="submit" value="Submit">
                 <input name="possible_bot" hidden="hidden" value="true">
