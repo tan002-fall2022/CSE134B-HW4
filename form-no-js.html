@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="themeLight">
 
 <head>
     <meta charset="utf-8">
@@ -150,13 +150,13 @@
                 <legend> CONTACT FORM </legend>
                 <label for="name"> NAME </label>
                 <input type="text" id="name" name="name" placeholder="Tung Nguyen" required>
-                <output class="error" for="name" hidden="hidden">error-message-if-any</output>
-                <output class="info" for="name" hidden="hidden">info-message-if-any</output>
+                <output class="error" for="name" hidden>error-message-if-any</output>
+                <output class="info" for="name" hidden>info-message-if-any</output>
 
                 <label for="email"> EMAIL </label>
                 <input type="email" id="email" name="email" placeholder="tan002@ucsd.edu" required>
-                <output class="error" for="email" hidden="hidden">error-message-if-any</output>
-                <output class="info" for="email" hidden="hidden">info-message-if-any</output>
+                <output class="error" for="email" hidden>error-message-if-any</output>
+                <output class="info" for="email" hidden>info-message-if-any</output>
 
                 <label for="services"> SERVICE </label>
                 <select name="services" id="services">
@@ -173,18 +173,19 @@
                     </optgroup>
                     <option value="Others" selected><b> Other(s) </b></option>
                 </select>
-                <output class="error" for="services">error-message-if-any</output>
-                <output class="info" for="services">info-message-if-any</output>
+                <output class="error" for="services" hidden>error-message-if-any</output>
+                <output class="info" for="services" hidden>info-message-if-any</output>
 
                 <label for="content"> CONTENT </label>
                 <textarea 
                 id="content" name="content" rows="10" 
-                cols="50" maxlength="500" placeholder="Write me something!"></textarea>
-                <output class="error" for="content" hidden="hidden">error-message-if-any</output>
-                <output class="info" for="content" hidden="hidden">info-message-if-any</output>
+                cols="50" maxlength="500" placeholder="500 characters limit"></textarea>
+                <output class="error" for="content" hidden>error-message-if-any</output>
+                <output class="info" for="content" hidden>info-message-if-any</output>
 
                 <input id="submit-butt" type="submit" value="Submit">
-                <input name="possible_bot" hidden="hidden" value="true">
+                <input name="possible_bot" hidden value="true">
+                <input name="form_errors" id="form_errors" hidden value="">
             </fieldset>
         </form>
     </main>
