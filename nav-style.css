@@ -6,7 +6,7 @@
 }
 
 .themeDark {
-    --primary-color: rgba(0, 0, 0, 0.983);
+    --primary-color: rgba(17, 14, 14, 0.983);
     --secondary-color: rgb(48, 25, 52);
     --third-color: rgb(139, 0, 139);
     --font-color: rgb(255, 255, 255); 

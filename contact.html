@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="themeLight">
 
 <head>
     <meta charset="utf-8">
@@ -19,6 +19,7 @@
 
         /* CSS FOR OVERALL GRID */
         .contact-form {
+            color: var(--font-color, black);
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             grid-template-rows: repeat(11, 0.25fr) 1fr repeat(2, 0.25fr);
@@ -65,6 +66,17 @@
             color: red;
             font-weight: bolder;
             grid-column: 1;
+            opacity: 0;
+        }
+
+        .error.fade_out {
+            animation: fadeOut 5s linear;
+            animation-fill-mode: forwards;
+        }
+
+        @keyframes fadeOut {
+            0% {opacity: 1}
+            100% {opacity: 0}
         }
 
         .info {
@@ -117,9 +129,24 @@
             grid-area: 14 / 1 / 14 / 1;
             overflow: auto;
             font-weight: bold;
-            background-color: var(--primary-color, white);
+            background-color: var(--secondary-color, white);
             border-style: solid;
+            color: var(--font-color, black);
             border-color: var(--third-color, black);
+        }
+
+        .errorRegex {
+            background-color: white;
+            animation: flash 1.5s infinite alternate;
+        }
+
+        @keyframes flash {
+            0% {
+                background-color: white;
+            }
+            100% {
+                background-color: rgb(231, 93, 93);
+            }
         }
 
         #social-media-icons {
@@ -128,6 +155,7 @@
         }
 
         footer {
+            color: var(--font-color, black);
             text-align: center;
         }
     </style>
@@ -141,6 +169,7 @@
             <a href="portfolio.html"><b>Portfolio</b></a>
             <a href="contact.html"><b>Contact</b></a>
             <a href="services.html"><b>Services</b></a>
+            <button id="themeSwitcher"><b>Light</b></button>
         </nav>
     </header>
 
@@ -150,13 +179,13 @@
                 <legend> CONTACT FORM </legend>
                 <label for="name"> NAME </label>
                 <input type="text" id="name" name="name" placeholder="Tung Nguyen" required>
-                <output class="error" for="name">error-message-if-any</output>
-                <output class="info" for="name">info-message-if-any</output>
+                <output class="error" for="name" hidden>error-message-if-any</output>
+                <output class="info" for="name" hidden>info-message-if-any</output>
 
                 <label for="email"> EMAIL </label>
                 <input type="email" id="email" name="email" placeholder="tan002@ucsd.edu" required>
-                <output class="error" for="email">error-message-if-any</output>
-                <output class="info" for="email">info-message-if-any</output>
+                <output class="error" for="email" hidden>error-message-if-any</output>
+                <output class="info" for="email" hidden>info-message-if-any</output>
 
                 <label for="services"> SERVICE </label>
                 <select name="services" id="services">
@@ -173,18 +202,19 @@
                     </optgroup>
                     <option value="Others" selected><b> Other(s) </b></option>
                 </select>
-                <output class="error" for="services">error-message-if-any</output>
-                <output class="info" for="services">info-message-if-any</output>
+                <output class="error" for="services" hidden>error-message-if-any</output>
+                <output class="info" for="services" hidden>info-message-if-any</output>
 
                 <label for="content"> CONTENT </label>
                 <textarea 
-                id="content" name="content" rows="10" 
-                cols="50" maxlength="500" placeholder="Write me something!"></textarea>
-                <output class="error" for="content">error-message-if-any</output>
-                <output class="info" for="content">info-message-if-any</output>
+                id="content" name="content" rows="10"
+                cols="50" maxlength="500" placeholder="500 characters limit"></textarea>
+                <output class="error" for="content" hidden>error-message-if-any</output>
+                <output class="info" for="content" hidden>info-message-if-any</output>
 
                 <input id="submit-butt" type="submit" value="Submit">
-                <input name="possible_bot" hidden="hidden" value="true">
+                <input name="possible_bot" hidden value="true">
+                <input name="form_errors" id="form_errors" hidden value="">
             </fieldset>
         </form>
     </main>
@@ -203,5 +233,223 @@
             </a>
         </div>
     </footer>
+
+    <script>
+        // Sourced from here:
+        // https://regexr.com/3e48o
+        // Though modified so that domain's length is up to 10
+        // Flaw: a bit too strict
+        // TODO: Implement RFC 5322 compliance if performance allows
+        const regExEmail = 
+        /^[\w-\.]+@([\w-]+\.)+[\w-]{2,10}$/;
+
+        // Sourced from here:
+        // https://stackoverflow.com/questions/57132303/regex-only-allow-englishlower-or-upper-numbers-special-characters
+        // Modified to only English (upper and lower), numbers, special characters, whitespace, empty, linebreak
+        // TODO: Fix other edge cases! like \blank
+        // Thought: Should I also accept other languages?
+        const regExContent = 
+        /^[~`!@#$%^&*()_+=[\]\{}|;':",.\/<>?a-zA-Z0-9- \n\s\t]*$/;
+
+        // Array to log ALL errors
+        const form_errors = [];
+
+        // To check if everything is valid
+        var emailValid = false;
+        var contentValid = false;
+        var everythingValid = false;
+        
+        function ready() {
+            const form = document.querySelector("form");
+            const email = document.getElementById("email");
+            const services = document.getElementById("services");
+            const content = document.getElementById("content");
+            const themeToggle = document.getElementById("themeSwitcher");
+            
+            // There should be no validation for name other
+            // than checking if it's not empty
+            // which is already enabled in the HTML
+
+            // 1 sec before show error
+            let timeOutEmail;
+            email.addEventListener("keyup", () => {
+                clearTimeout(timeOutEmail);
+                timeOutEmail = setTimeout(handlingEmail, 1000);
+            });
+
+            services.addEventListener("change", (event) => {
+                handlingServices();
+            })
+
+            let timeOutContent;
+            content.addEventListener("keyup", () => {
+                clearTimeout(timeOutContent);
+                timeOutContent = setTimeout(handlingContent, 1000);
+            })
+
+            form.addEventListener("submit", (event) => {
+                // Form not valid, prevent submitting
+                if (!(emailValid == true && contentValid == true)) {
+                    event.preventDefault();
+                }
+                // Form is valid, reset form after submit
+                else {
+                    document.getElementById("form_errors").value = JSON.stringify(form_errors);
+                }
+            })
+
+            themeToggle.addEventListener("click", (event) => {
+                toggleTheme();
+            })
+        };
+
+        /* HANDLING SERVICES SELECT */
+        function handlingServices () {
+            const servicesInfo = document.querySelector('.info[for="services"]');
+
+            if (services.value == "Others") {
+                servicesInfo.hidden = false;
+                servicesInfo.innerHTML = "If you select Other(s), please comment below!"
+            }
+            else {
+                servicesInfo.innerHTML = "";
+            }
+        }
+
+        /* HANDLING EMAIL FIELD */
+        function handlingEmail() {
+            const emailError = document.querySelector('.error[for="email"]');
+
+            if (email.validity.valid && regExEmail.test(email.value)) {
+                // In case there is an error message visible, if the field
+                // is valid, we remove the error message.
+                emailError.innerHTML = ""; // Reset the content of the message  
+                email.className = "null"; // Set class to none
+                emailError.classList.remove("fade_out");
+                emailValid = true;
+            } 
+            else {
+                emailValid = false;
+                emailError.hidden = false;
+
+                // If there is still an error, show the correct error
+                if (email.validity.valueMissing) {
+                    // If the field is empty,
+                    // display the following error message.
+                    emailError.innerHTML = "You need to enter an email address.";
+                    email.className = "null"; // Set class to none
+                    form_errors.push("User left email blank");
+                } 
+                else if (email.validity.typeMismatch) {
+                    // If the field doesn't contain an email address,
+                    // display the following error message.
+                    emailError.innerHTML = "The email address should follow format example@subdomain.domain";
+                    email.className = "null"; // Set class to none
+                    form_errors.push(email.value + ": type mismatch");
+                }
+                else if (!regExEmail.test(email.value)) {
+                    // The email structure wise is correct but it may contain
+                    // illegal characters or domain
+                    email.className = "errorRegex";
+                    emailError.innerHTML = "This email contains contains illegal characters or domain";
+                    form_errors.push(email.value + ": illegal character(s)/domain");
+                }
+
+                emailError.classList.toggle('fade_out');
+                setTimeout(function() {
+                    emailError.classList.toggle('fade_out');
+                }, 5000)
+            }
+        }
+
+        /* HANDLING TEXTAREA COMMENT */
+        function handlingContent() {
+            const contentError = document.querySelector('.error[for="content"]');
+            const contentInfo = document.querySelector('.info[for="content"]');
+
+            // Handling error
+            if (regExContent.test(content.value)) {
+                // In case there is an error message visible, if the field
+                // is valid, we remove the error message.
+                contentError.innerHTML = ""; // Reset the content of the message  
+                content.className = "null"; // Set class to none
+                contentValid = true;
+            } 
+            else {
+                contentValid = false;
+                contentError.hidden = false;
+
+                // The comment may contain illegal characters
+                content.className = "errorRegex";
+                contentError.classList.toggle('fade_out');
+                setTimeout(function() {
+                    contentError.classList.toggle('fade_out');
+                }, 5000)
+                contentError.innerHTML = "This comment contains illegal characters!";
+                form_errors.push("Illegal character(s) in following comment: " + content.value);
+            }
+
+            // Handling info    
+            // If current length is 0, hide info
+            if (content.value.length == 0) {
+                contentInfo.hidden = true;
+            }
+            else {
+                contentInfo.hidden = false;
+            }
+
+            // If current length is 50% of max length
+            if (content.value.length / content.maxLength >= 0.50) {
+                contentInfo.style.color = "yellow";
+                contentInfo.innerHTML = "Warning: " + (content.maxLength - content.value.length) + " character(s) remaining!"
+            }
+            // If current length is 90% of max length
+            if (content.value.length / content.maxLength >= 0.90) {
+                contentInfo.style.color = "red";
+                contentInfo.innerHTML = "Critical: " + (content.maxLength - content.value.length) + " character(s) remaining!"
+                form_errors.push("Following comment close to character limit: " + content.value);
+            }
+            // All good
+            else {
+                contentInfo.style.color = "white";
+                contentInfo.innerHTML = (content.maxLength - content.value.length) + " character(s) remaining"
+            }
+        }
+
+        /* JS TO SET THEME */
+        function setTheme(themeName) {
+            localStorage.setItem('theme', themeName);
+            document.documentElement.className = themeName;
+        }
+
+        // function to toggle between light and dark theme
+        function toggleTheme() {
+            const toggle = document.getElementById("themeSwitcher");
+
+            if (localStorage.getItem('theme') === 'themeDark') {
+                toggle.innerHTML = "Light";
+                setTheme('themeLight');
+            } else {
+                toggle.innerHTML = "Dark";
+                setTheme('themeDark');
+            }
+        }
+        
+        // Load initial theme on start up
+        (function () {
+            const toggle = document.getElementById("themeSwitcher");
+
+            if (localStorage.getItem('theme') === 'themeDark') {
+                toggle.innerHTML = "Dark";
+                setTheme('themeDark');
+            } else {
+                toggle.innerHTML = "Light";
+                setTheme('themeLight');
+            }
+        })();
+
+        /* Wait until page load to start firing javascript */
+        document.addEventListener("DOMContentLoaded", ready());
+    </script>
 </body>
 </html>
