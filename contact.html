@@ -351,14 +351,16 @@
                     // The email structure wise is correct but it may contain
                     // illegal characters or domain
                     email.className = "errorRegex";
-                    emailError.innerHTML = "This email contains contains illegal characters or domain";
+                    emailError.innerHTML = "This email contains illegal characters or domain";
 
                     // Fade out and hide message after 5 seconds
+                    // Bug: previous timer not clearing
+                    // TODO: FIX SAID BUG through a different implementation
                     emailError.classList.toggle('fade_out');
                     setTimeout(function() {
                         emailError.classList.toggle('fade_out');
                         emailError.innerHTML = "";
-                    }, 5000)
+                    }, 5000);
                     
                     form_errors.push(email.value + ": illegal character(s)/domain");
                 }
@@ -386,6 +388,8 @@
                 content.className = "errorRegex";
 
                 // Fade out and hide message after 5 seconds
+                // Bug: previous timer not clearing
+                // TODO: FIX SAID BUG through a different implementation
                 contentError.classList.toggle('fade_out');
                 setTimeout(function() {
                     contentError.classList.toggle('fade_out');
