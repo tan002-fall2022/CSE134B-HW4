@@ -1,8 +1,15 @@
-:root {
+.themeLight {
     --primary-color: white;
     --secondary-color: rgb(132, 74, 132);
     --third-color: rgb(221, 121, 221);
     --font-color: black; 
+}
+
+.themeDark {
+    --primary-color: rgba(0, 0, 0, 0.983);
+    --secondary-color: rgb(48, 25, 52);
+    --third-color: rgb(139, 0, 139);
+    --font-color: rgb(255, 255, 255); 
 }
 
 * {
@@ -47,6 +54,33 @@
     transition: all 0.5s ease-out;
 }
 
+.nav-bar button {
+    float: right;
+    display: block;
+    padding: 1em 1em;
+    color: var(--font-color, black);
+    background-color: var(--secondary-color, purple);
+    border-color: var(--third-color, pink);
+    font-weight: 400;
+    line-height: 1.5;
+    text-align: center;
+    border: 1px solid;
+    padding: 0.5em 0.5em;
+    margin: 0.25em 0.5em 0.25em auto;
+    font-size: 1em;
+    transition: color .15s ease-in-out,background-color .15s ease-in-out,border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+}
+
+.nav-bar button:hover {
+    color: #fff;
+    background-color: var(--secondary-color, purple);
+    border-color: var(--third-color, pink);
+}
+
+.nav-bar a:visited {
+    color: var(--font-color);
+}   
+
 .nav-bar a:hover, a:focus {
     background: var(--secondary-color, white);
     color: var(--primary-color, black);
@@ -55,6 +89,4 @@
 body {
     margin: 3.1em 0 0 0;
 }
-
-
 
