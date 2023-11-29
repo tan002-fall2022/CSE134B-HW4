@@ -66,7 +66,7 @@
             color: red;
             font-weight: bolder;
             grid-column: 1;
-            opacity: 0;
+            opacity: 1;
         }
 
         .error.fade_out {
@@ -352,13 +352,16 @@
                     // illegal characters or domain
                     email.className = "errorRegex";
                     emailError.innerHTML = "This email contains contains illegal characters or domain";
+
+                    // Fade out and hide message after 5 seconds
+                    emailError.classList.toggle('fade_out');
+                    setTimeout(function() {
+                        emailError.classList.toggle('fade_out');
+                        emailError.innerHTML = "";
+                    }, 5000)
+                    
                     form_errors.push(email.value + ": illegal character(s)/domain");
                 }
-
-                emailError.classList.toggle('fade_out');
-                setTimeout(function() {
-                    emailError.classList.toggle('fade_out');
-                }, 5000)
             }
         }
 
@@ -381,10 +384,14 @@
 
                 // The comment may contain illegal characters
                 content.className = "errorRegex";
+
+                // Fade out and hide message after 5 seconds
                 contentError.classList.toggle('fade_out');
                 setTimeout(function() {
                     contentError.classList.toggle('fade_out');
+                    contentError.innerHTML = "";
                 }, 5000)
+
                 contentError.innerHTML = "This comment contains illegal characters!";
                 form_errors.push("Illegal character(s) in following comment: " + content.value);
             }
