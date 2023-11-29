@@ -169,7 +169,7 @@
             <a href="portfolio.html"><b>Portfolio</b></a>
             <a href="contact.html"><b>Contact</b></a>
             <a href="services.html"><b>Services</b></a>
-            <button id="themeSwitcher"><b>Light</b></button>
+            <button id="themeSwitcher" hidden><b>Light</b></button>
         </nav>
     </header>
 
@@ -265,6 +265,7 @@
             const services = document.getElementById("services");
             const content = document.getElementById("content");
             const themeToggle = document.getElementById("themeSwitcher");
+            themeToggle.style.display = "block";
             
             // There should be no validation for name other
             // than checking if it's not empty
